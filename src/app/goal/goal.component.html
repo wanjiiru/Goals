@@ -18,7 +18,7 @@
 <p *ngIf='goals.length > 5'>You have too many goals</p> -->
 
 
-<h1>My Goals</h1>
+<!-- <h1>My Goals</h1>
 <hr>
 
 <ul>
@@ -29,4 +29,17 @@
         <app-goal-details *ngIf="goal.showDescription" [goal]='goal'></app-goal-details>
     </div>
 </ul>
-  <p *ngIf='goals.length > 5'>You have too many goals</p>
+  <p *ngIf='goals.length > 5'>You have too many goals</p> -->
+
+
+  <h1>My Goals</h1>
+<ul>
+    <div *ngFor='let goal of goals;let i = index'>
+        <li >{{goal.name}}</li>
+        <button  (click)='toogleDetails(i)'>Toogle Details</button>
+
+        <app-goal-details *ngIf="goal.showDescription" [goal]='goal' (isComplete)= 'completeGoal($event,i)'></app-goal-details>
+    </div>
+  
+</ul>
+<p *ngIf='goals.length > 5'>You have too many goals</p>
